@@ -1,4 +1,8 @@
+import 'package:first_app/routes.dart';
+
 import 'package:first_app/screens/home_screen.dart';
+import 'package:first_app/screens/login.dart';
+import 'package:first_app/screens/signup.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,9 +14,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      routes: {
+        Routes.home: (context) => HomeScreen(),
+        Routes.signup: (context) => SignupScreen(),
+        Routes.login: (context) => LoginScreen(),
+        Routes.main: (context) => MyApp(),
+        // Routes.details: (context) => DetailsScreen(),
+      },
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }
