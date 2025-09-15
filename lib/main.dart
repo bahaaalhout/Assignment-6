@@ -1,8 +1,9 @@
 import 'package:first_app/routes.dart';
 
 import 'package:first_app/screens/home_screen.dart';
-import 'package:first_app/screens/login.dart';
-import 'package:first_app/screens/signup.dart';
+import 'package:first_app/screens/auth/login.dart';
+import 'package:first_app/screens/auth/signup.dart';
+import 'package:first_app/screens/product/product_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         // Routes.details: (context) => DetailsScreen(),
       },
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: HomeScreen(),
     );
   }
 }

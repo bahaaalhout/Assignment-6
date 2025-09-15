@@ -1,4 +1,6 @@
-import 'package:first_app/screens/home.dart';
+import 'package:first_app/screens/book/book_screen.dart';
+import 'package:first_app/screens/freelancer/home.dart';
+import 'package:first_app/screens/product/product_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,33 +13,17 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
   List<Widget> data = [
-    Home(),
-    Text('Explore'),
-    Text('Search'),
+    ProductScreen(),
+    BookScreen(),
+    Text('Profile'),
     Text('Profile'),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Icon(Icons.menu, weight: 25),
-        title: Image.asset('assets/logo.png'),
-        actions: [
-          SizedBox(width: 12),
-          Image.asset('assets/bell.png'),
-          SizedBox(width: 12),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.grey.shade100,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Image.asset('assets/cart.png'),
-          ),
-          SizedBox(width: 12),
-        ],
-      ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Color(0xff827BEB),
+        backgroundColor: Color(0xff1D1F24),
         currentIndex: index,
         onTap: (value) {
           setState(() {
@@ -52,10 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.explore_outlined),
-            activeIcon: Icon(Icons.explore),
+            icon: Icon(Icons.menu_book_sharp),
+            activeIcon: Icon(Icons.menu_book),
             backgroundColor: Color(0xff1D1F24),
-            label: 'Explore',
+            label: 'Book',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search_sharp),
@@ -67,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.person_outline),
             activeIcon: Icon(Icons.person),
             backgroundColor: Color(0xff1D1F24),
-            label: 'Profile',
+            label: 'Actors',
           ),
         ],
       ),
