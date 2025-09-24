@@ -1,11 +1,13 @@
 import 'package:first_app/routes.dart';
+import 'package:first_app/screens/home_screen.dart';
 import 'package:first_app/widgets/button.dart';
 import 'package:first_app/widgets/text_input.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
-
+  static const String userCred = 'isLogedin';
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -94,11 +96,21 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formkey.currentState!.validate()) {
       setState(() {
         isLoading = true;
+        checkLogin(_emailController.text);
       });
 
       await Future.delayed(Duration(seconds: 2));
-      Navigator.of(context).pushReplacementNamed(Routes.home);
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(email: _emailController.text),
+        ),
+      );
     }
+  }
+
+  checkLogin(String email) async {
+    var prefs = await SharedPreferences.getInstance();
+    prefs.setString(LoginScreen.userCred, email);
   }
 }
 

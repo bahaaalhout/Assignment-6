@@ -1,23 +1,33 @@
+import 'package:first_app/screens/actors/actors_screen.dart';
+import 'package:first_app/screens/auth/login.dart';
 import 'package:first_app/screens/book/book_screen.dart';
-import 'package:first_app/screens/freelancer/home.dart';
 import 'package:first_app/screens/product/product_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
+  const HomeScreen({super.key, required this.email});
+  final String email;
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
+
   List<Widget> data = [
     ProductScreen(),
     BookScreen(),
-    Text('Profile'),
-    Text('Profile'),
+    Text('widget.email'),
+    ActorScreen(),
   ];
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   email = getEmail();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.search_sharp),
             activeIcon: Icon(Icons.search_rounded),
             backgroundColor: Color(0xff1D1F24),
-            label: 'Search',
+            label: widget.email,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),
@@ -60,4 +70,10 @@ class _HomeScreenState extends State<HomeScreen> {
       body: data[index],
     );
   }
+
+  // getEmail() async {
+  //   var prefs = await SharedPreferences.getInstance();
+  //   var email = prefs.getString(LoginScreen.userCred);
+  //   return email;
+  // }
 }

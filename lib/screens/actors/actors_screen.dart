@@ -1,53 +1,52 @@
 import 'dart:convert';
-
-import 'package:first_app/data/book_model.dart';
-import 'package:first_app/widgets/book_list.dart';
+import 'package:first_app/data/actor_model.dart';
+import 'package:first_app/widgets/actor_list.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-class BookScreen extends StatefulWidget {
-  const BookScreen({super.key});
+class ActorScreen extends StatefulWidget {
+  const ActorScreen({super.key});
 
   @override
-  State<BookScreen> createState() => _BookScreenState();
+  State<ActorScreen> createState() => _ActorScreenState();
 }
 
-class _BookScreenState extends State<BookScreen> {
-  final List books = [];
+class _ActorScreenState extends State<ActorScreen> {
+  final List actors = [];
 
   @override
   void initState() {
     super.initState();
-    // fetchBook();
+    // fetchActors();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Harry Potter Books'),
+        title: Text('Actors'),
         centerTitle: true,
         backgroundColor: Colors.grey,
         foregroundColor: Colors.white,
       ),
       body: ListView.builder(
         itemBuilder: (BuildContext context, int index) {
-          return BookList(model: books[index]);
+          return ActorList(model: actors[index]);
         },
-        itemCount: books.length,
+        itemCount: actors.length,
       ),
     );
   }
 
-  fetchBook() async {
+  fetchActors() async {
     Response data = await get(
-      Uri.parse('https://potterapi-fedeperin.vercel.app/en/books'),
+      Uri.parse('https://potterapi-fedeperin.vercel.app/en/characters'),
     );
     // print(data.body);
     var respone = jsonDecode(data.body);
     for (Map map in respone) {
-      BookModel model = BookModel.fromjson(map);
-      books.add(model);
+      ActorModel model = ActorModel.fromjson(map);
+      actors.add(model);
     }
     setState(() {});
   }

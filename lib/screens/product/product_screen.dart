@@ -18,7 +18,7 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   void initState() {
     super.initState();
-    fetchData();
+    // fetchData();
   }
 
   @override

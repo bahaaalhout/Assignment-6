@@ -12,7 +12,6 @@ class ProductList extends StatelessWidget {
         context,
         MaterialPageRoute(builder: (context) => ProductDetails(model: product)),
       ),
-
       leading: Image.network(product.image, width: 80, fit: BoxFit.cover),
       title: Text(product.title, overflow: TextOverflow.fade),
       subtitle: Text(product.description, overflow: TextOverflow.ellipsis),
