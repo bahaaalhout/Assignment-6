@@ -1,9 +1,7 @@
 import 'package:first_app/screens/actors/actors_screen.dart';
-import 'package:first_app/screens/auth/login.dart';
 import 'package:first_app/screens/book/book_screen.dart';
 import 'package:first_app/screens/product/product_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.email});
