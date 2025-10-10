@@ -1,5 +1,4 @@
 import 'package:first_app/todo/data/note_model.dart';
-import 'package:first_app/todo/data/note_sqllite_db.dart';
 import 'package:first_app/todo/presentaion/provider/note_provider.dart';
 import 'package:first_app/widgets/text_input.dart';
 import 'package:flutter/material.dart';
@@ -43,38 +42,36 @@ class NoteItem extends StatelessWidget {
           subtitle: Text(subTitle),
           onTap: () => showModalBottomSheet(
             context: context,
-            builder: (context) => Container(
-              child: Column(
-                children: [
-                  Text("Update Note"),
-                  TextInput(
-                    hint: _titleController.text,
-                    controller: _titleController,
-                  ),
-                  TextInput(
-                    hint: _subTitleController.text,
-                    controller: _subTitleController,
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      var updatedNote = NoteModel(
-                        id: note.id,
-                        title: _titleController.text,
-                        subTitle: _subTitleController.text,
-                      );
-                      Provider.of<NoteProvider>(
-                        context,
-                        listen: false,
-                      ).updateNote(updatedNote);
-                      _titleController.clear();
-                      _subTitleController.clear();
+            builder: (context) => Column(
+              children: [
+                Text("Update Note"),
+                TextInput(
+                  hint: _titleController.text,
+                  controller: _titleController,
+                ),
+                TextInput(
+                  hint: _subTitleController.text,
+                  controller: _subTitleController,
+                ),
+                TextButton(
+                  onPressed: () {
+                    var updatedNote = NoteModel(
+                      id: note.id,
+                      title: _titleController.text,
+                      subTitle: _subTitleController.text,
+                    );
+                    Provider.of<NoteProvider>(
+                      context,
+                      listen: false,
+                    ).updateNote(updatedNote);
+                    _titleController.clear();
+                    _subTitleController.clear();
 
-                      Navigator.pop(context);
-                    },
-                    child: Text('Update Note'),
-                  ),
-                ],
-              ),
+                    Navigator.pop(context);
+                  },
+                  child: Text('Update Note'),
+                ),
+              ],
             ),
           ),
         ),

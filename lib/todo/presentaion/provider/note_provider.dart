@@ -31,6 +31,8 @@ class NoteProvider extends ChangeNotifier {
 
   updateNote(NoteModel noteModel) {
     NotesSqliteDb.updateNoteFromDb(noteModel);
+    int index = notes.indexWhere((element) => element.id == noteModel.id);
+    notes[index] = noteModel;
     notifyListeners();
   }
 }

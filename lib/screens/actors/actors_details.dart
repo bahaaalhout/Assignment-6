@@ -1,4 +1,4 @@
-import 'package:first_app/data/actor_model.dart';
+import 'package:first_app/shop/data/actor_model.dart';
 import 'package:flutter/material.dart';
 
 class ActorsDetails extends StatelessWidget {

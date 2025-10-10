@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:first_app/data/actor_model.dart';
-import 'package:first_app/widgets/actor_list.dart';
+import 'package:first_app/shop/data/actor_model.dart';
+import 'package:first_app/shop/presentation/widgets/actor_list.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 

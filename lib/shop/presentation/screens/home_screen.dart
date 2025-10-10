@@ -1,11 +1,12 @@
 import 'package:first_app/screens/actors/actors_screen.dart';
 import 'package:first_app/screens/book/book_screen.dart';
-import 'package:first_app/screens/product/product_screen.dart';
+import 'package:first_app/shop/presentation/screens/cart_screen.dart';
+import 'package:first_app/shop/presentation/screens/product_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.email});
-  final String email;
+  const HomeScreen({super.key, this.email});
+  final String? email;
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -16,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> data = [
     ProductScreen(),
     BookScreen(),
-    Text('widget.email'),
+    CartScreen(),
     ActorScreen(),
   ];
 
@@ -52,10 +53,10 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Book',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search_sharp),
-            activeIcon: Icon(Icons.search_rounded),
+            icon: Icon(Icons.shopping_cart_outlined),
+            activeIcon: Icon(Icons.shopping_cart_sharp),
             backgroundColor: Color(0xff1D1F24),
-            label: widget.email,
+            label: 'Cart',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),

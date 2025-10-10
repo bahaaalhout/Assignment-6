@@ -1,4 +1,4 @@
-import 'package:first_app/data/book_model.dart';
+import 'package:first_app/shop/data/book_model.dart';
 import 'package:first_app/screens/book/book_details.dart';
 import 'package:flutter/material.dart';
 

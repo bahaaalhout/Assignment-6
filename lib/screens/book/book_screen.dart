@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:first_app/data/book_model.dart';
-import 'package:first_app/widgets/book_list.dart';
+import 'package:first_app/shop/data/book_model.dart';
+import 'package:first_app/shop/presentation/widgets/book_list.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 

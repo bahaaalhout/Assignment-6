@@ -1,5 +1,5 @@
 import 'package:first_app/routes.dart';
-import 'package:first_app/screens/home_screen.dart';
+import 'package:first_app/shop/presentation/screens/home_screen.dart';
 import 'package:first_app/widgets/button.dart';
 import 'package:first_app/widgets/text_input.dart';
 import 'package:flutter/material.dart';

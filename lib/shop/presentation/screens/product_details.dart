@@ -1,4 +1,4 @@
-import 'package:first_app/data/product_model.dart';
+import 'package:first_app/shop/data/product_model.dart';
 import 'package:first_app/widgets/rate_section.dart';
 import 'package:flutter/material.dart';
 
