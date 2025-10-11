@@ -1,10 +1,6 @@
-import 'dart:convert';
-
-import 'package:first_app/shop/data/product_model.dart';
 import 'package:first_app/shop/presentation/provider/product_provider.dart';
 import 'package:first_app/shop/presentation/widgets/product_list.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -15,14 +11,6 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-  final List products = [];
-
-  @override
-  void initState() {
-    super.initState();
-    fetchData();
-  }
-
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<ProductProvider>(context);
@@ -34,7 +22,7 @@ class _ProductScreenState extends State<ProductScreen> {
         foregroundColor: Colors.white,
         actions: [
           Badge.count(
-            count: provider.products.length,
+            count: provider.cart.length,
             child: Icon(Icons.shopping_cart),
           ),
         ],
@@ -42,26 +30,15 @@ class _ProductScreenState extends State<ProductScreen> {
       body: ListView.builder(
         itemBuilder: (BuildContext context, int index) {
           return ProductList(
-            product: products[index],
+            product: provider.products[index],
             onPressed: () {
-              if (provider.products.contains(products[index])) return;
-              provider.addProduct(products[index]);
+              if (provider.cart.contains(provider.products[index])) return;
+              provider.addProduct(provider.products[index]);
             },
           );
         },
-        itemCount: products.length,
+        itemCount: provider.products.length,
       ),
     );
-  }
-
-  fetchData() async {
-    Response data = await get(Uri.parse('https://fakestoreapi.com/products'));
-    // print(data.body);
-    var respone = jsonDecode(data.body);
-    for (Map map in respone) {
-      ProductModel model = ProductModel.fromjson(map);
-      products.add(model);
-    }
-    setState(() {});
   }
 }

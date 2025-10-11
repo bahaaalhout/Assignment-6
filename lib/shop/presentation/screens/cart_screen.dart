@@ -33,13 +33,13 @@ class CartScreen extends StatelessWidget {
       body: Consumer<ProductProvider>(
         builder: (context, provider, child) => ListView.builder(
           itemBuilder: (context, index) => ProductList(
-            product: provider.products[index],
+            product: provider.cart[index],
             onPressed: () {
-              provider.removeProduct(provider.products[index]);
+              provider.removeProduct(provider.cart[index]);
             },
             isUsedCart: true,
           ),
-          itemCount: provider.products.length,
+          itemCount: provider.cart.length,
         ),
       ),
     );
