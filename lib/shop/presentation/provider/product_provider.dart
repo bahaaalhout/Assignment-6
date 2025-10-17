@@ -1,13 +1,12 @@
 import 'package:first_app/shop/data/product_model.dart';
-import 'package:first_app/shop/data/product_repositriy.dart';
 import 'package:flutter/widgets.dart';
 
 class ProductProvider extends ChangeNotifier {
   List<ProductModel> cart = [];
   List<ProductModel> products = [];
   fetchData() async {
-    var fetchedData = await ProductRepositriy.fetchData();
-    products = fetchedData;
+    // var fetchedData = await ProductRepositriy.fetchData();
+    // products = fetchedData;
     notifyListeners();
   }
 
