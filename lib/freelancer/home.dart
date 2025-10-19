@@ -1,4 +1,5 @@
 import 'package:first_app/data/freelancer.dart';
+import 'package:first_app/freelancer/auth/auth_sharedpref.dart';
 import 'package:first_app/widgets/ads.dart';
 import 'package:first_app/widgets/bar.dart';
 import 'package:first_app/widgets/freelance_info.dart';
@@ -6,7 +7,8 @@ import 'package:first_app/widgets/top_rated.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  Home({super.key});
+  Home({super.key, this.email});
+  final String? email;
   final List<Freelancer> freelancer = [
     Freelancer(
       name: 'Wade Warren',
@@ -59,6 +61,7 @@ class Home extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    var emailAdress = AuthSharedpref.prefs.getString(AuthSharedpref.userCred);
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.menu, weight: 25),
@@ -81,6 +84,7 @@ class Home extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(emailAdress ?? "quest"),
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(12.0),

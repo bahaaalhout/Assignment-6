@@ -1,6 +1,6 @@
 import 'package:first_app/data/freelancer.dart';
 
-import 'package:first_app/screens/freelancer/details.dart';
+import 'package:first_app/freelancer/details.dart';
 import 'package:first_app/widgets/rate_section.dart';
 import 'package:flutter/material.dart';
 
