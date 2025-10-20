@@ -3,13 +3,10 @@ import 'package:first_app/freelancer/freelance_cubit.dart';
 import 'package:first_app/freelancer/freelancer_states.dart';
 import 'package:first_app/freelancer/home.dart';
 import 'package:first_app/routes.dart';
-import 'package:first_app/screens/counter_screen.dart';
-import 'package:first_app/shop/presentation/screens/home_screen.dart';
 import 'package:first_app/widgets/button.dart';
 import 'package:first_app/widgets/text_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
