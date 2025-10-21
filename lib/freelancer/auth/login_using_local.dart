@@ -8,30 +8,34 @@ import 'package:first_app/widgets/text_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
 
   final TextEditingController _passController = TextEditingController();
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<FreelanceCubit, FreelancerStates>(
       listener: (context, state) {
         if (state is AuthSuccessState) {
-          print(state.email);
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
               builder: (context) =>
                   // HomeScreen(email: _emailController.text),
-                  Home(email: state.email),
+                  Home(email: state.user.email),
             ),
           );
         } else if (state is AuthErrorState) {
-          showSnackBar(state.error, context);
+          showSnackBar(state.errorMessage, context);
         }
       },
       child: Scaffold(
@@ -117,16 +121,11 @@ class LoginScreen extends StatelessWidget {
       String email = _emailController.text;
       String password = _passController.text;
       BlocProvider.of<FreelanceCubit>(context).loginMethod(email, password);
-      AuthSharedpref.login(email);
+      // AuthSharedpref.login(email);
     }
   }
 
-  // checkLogin(String email) async {
-  //   var prefs = await SharedPreferences.getInstance();
-  //   prefs.setString(LoginScreen.userCred, email);
-  // }
-}
-
-void showSnackBar(String bio, BuildContext context) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(bio)));
+  void showSnackBar(String bio, BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(bio)));
+  }
 }

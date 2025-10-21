@@ -1,10 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_app/data/freelancer.dart';
 import 'package:first_app/freelancer/auth/auth_sharedpref.dart';
+import 'package:first_app/freelancer/auth/authfirebase_freelance.dart';
+import 'package:first_app/freelancer/freelance_cubit.dart';
+import 'package:first_app/routes.dart';
 import 'package:first_app/widgets/ads.dart';
 import 'package:first_app/widgets/bar.dart';
 import 'package:first_app/widgets/freelance_info.dart';
 import 'package:first_app/widgets/top_rated.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Home extends StatelessWidget {
   Home({super.key, this.email});
@@ -61,10 +66,16 @@ class Home extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    var emailAdress = AuthSharedpref.prefs.getString(AuthSharedpref.userCred);
+    // var emailAdress = AuthSharedpref.prefs.getString(AuthSharedpref.userCred);
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.menu, weight: 25),
+        leading: IconButton(
+          onPressed: () {
+            AuthFireBaseFreelance.signOut();
+            Navigator.pushReplacementNamed(context, Routes.login);
+          },
+          icon: Icon(Icons.menu, weight: 25),
+        ),
         title: Image.asset('assets/logo.png'),
         actions: [
           SizedBox(width: 12),
@@ -84,7 +95,7 @@ class Home extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(emailAdress ?? "quest"),
+            Text(email ?? "quest"),
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(12.0),
